@@ -18,4 +18,5 @@ Route::get('/', function()
 
 Route::resource('module', 'ModuleController');
 
+
 Route::resource('user', 'UserController');

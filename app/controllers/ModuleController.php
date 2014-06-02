@@ -9,7 +9,8 @@ class ModuleController extends BaseController {
 	 */
 	public function index()
 	{
-		return View::make('module.index');
+		$data = array('module' => Module::all());
+		return View::make('module.index')->with($data);
 	}
 
 
@@ -23,7 +24,6 @@ class ModuleController extends BaseController {
 		return View::make('module.create');
 	}
 
-
 	/**
 	 * Store a newly created resource in storage.
 	 *
@@ -31,7 +31,24 @@ class ModuleController extends BaseController {
 	 */
 	public function store()
 	{
-		//
+		if (Request::isMethod('post'))
+		{
+			$data = array('module' => 'ok');
+			$var = Request::all();
+
+			$module = new Module;
+			$module->name = $var['name'];
+			$module->description = $var['desc'];
+			$module->max_places = $var['nb_place'];
+			$module->credits_value = $var['nb_credit'];
+			$module->start_register = $var['beg_insc'];
+			$module->end_register = $var['end_insc'];
+			$module->start_module = $var['beg_mod'];
+			$module->end_module = $var['end_mod'];
+			
+			$module->save();
+		    return View::make('module.create')->with($data)->with($var);
+		}
 	}
 
 
@@ -79,7 +96,7 @@ class ModuleController extends BaseController {
 	 */
 	public function destroy($id)
 	{
-		//
+		return View::make('hello.php');
 	}
 
 
