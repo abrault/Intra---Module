@@ -40,8 +40,8 @@
         </div>
         <div class="navbar-collapse collapse">
           <ul class="nav navbar-nav">
-            <li class="active"><a href="/module/public/module">Display</a></li>
-            <li><a href="/module/public/module/create">Create</a></li>
+            <li class="active"><a href="{{action('ModuleController@index')}}">Display</a></li>
+            <li><a href="{{action('ModuleController@create')}}">Create</a></li>
           </ul>
         </div><!--/.nav-collapse -->
       </div>
