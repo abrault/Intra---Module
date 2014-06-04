@@ -13,12 +13,11 @@
 
 Route::get('/', function()
 {
-	return View::make('hello');
+	return Redirect::action('ModuleController@index');
 });
 
-Route::get('/module/delete/{$id}', 'ModuleController@delete');
-
 Route::resource('module', 'ModuleController');
+	Route::get('/delete/{$id}', 'ModuleController@delete');
 
 
 Route::resource('user', 'UserController');
