@@ -16,6 +16,8 @@ Route::get('/', function()
 	return View::make('hello');
 });
 
+Route::get('/module/delete/{$id}', 'ModuleController@delete');
+
 Route::resource('module', 'ModuleController');
 
 
