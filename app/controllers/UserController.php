@@ -10,7 +10,7 @@ class UserController extends BaseController {
 	 */
 	public function index()
 	{
-		echo 'User definit en tant que ';
+		//
 	}
 
 
