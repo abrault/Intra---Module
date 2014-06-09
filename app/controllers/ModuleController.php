@@ -51,22 +51,25 @@ class ModuleController extends BaseController {
 		}
 	}
 
-
-	/**
-	 * Display the specified resource.
-	 *
-	 * @param  int  $id
-	 * @return Response
-	 */
-	public function show($id)
-	{
-		//
-	}
-
 	public function delete($id)
 	{
 		$user = Module::find($id);
 		$user->delete();
 		return Redirect::action('ModuleController@index');
 	}
+
+		public function modify($id)
+	{
+		$user = Module::find($id);
+		$user->delete();
+		return Redirect::action('ModuleController@index');
+	}
+
+		public function register($id)
+	{
+		$user = Module::find($id);
+		$user->delete();
+		return Redirect::action('ModuleController@index');
+	}
+
 }

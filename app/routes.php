@@ -11,13 +11,9 @@
 |
 */
 
-Route::get('/', function()
-{
-	return Redirect::action('ModuleController@index');
-});
-
 Route::resource('module', 'ModuleController');
-	Route::get('/delete/{$id}', 'ModuleController@delete');
-
+	Route::get('delete/{id}', 'ModuleController@delete');
+	Route::get('modify/{id}', 'ModuleController@modify');
+	Route::get('register/{id}', 'ModuleController@register');
 
 Route::resource('user', 'UserController');
