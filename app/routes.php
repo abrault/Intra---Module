@@ -11,9 +11,15 @@
 |
 */
 
+Route::get('/', 'ModuleController@index');
+
 Route::resource('module', 'ModuleController');
 	Route::get('delete/{id}', 'ModuleController@delete');
 	Route::get('modify/{id}', 'ModuleController@modify');
 	Route::get('register/{id}', 'ModuleController@register');
+
+Route::get('login/{user}', 'UserController@login');
+Route::get('logout', 'UserController@logout');
+Route::get('register', 'UserController@register');
 
 Route::resource('user', 'UserController');

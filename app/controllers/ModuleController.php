@@ -53,22 +53,49 @@ class ModuleController extends BaseController {
 
 	public function delete($id)
 	{
-		$user = Module::find($id);
-		$user->delete();
+		$mod = Module::find($id);
+		$mod->delete();
 		return Redirect::action('ModuleController@index');
 	}
 
-		public function modify($id)
+	public function modify($id)
 	{
-		$user = Module::find($id);
-		$user->delete();
+		$mod = Module::find($id);
+		$data = array('id' => $id, 'mod' => $mod);
+		return View::make('module.modify')->with($data);
+	}
+
+	public function register($id)
+	{
+		if (Auth::check())
+		{
+			$user_id = Auth::user()->id;
+			$user = DB::table('modules_users')
+	                    ->where('module_id', '=', $id)
+	                    ->orWhere('user_id', '=', $user_id)
+	                    ->get();
+			if (!$user)
+			{
+				DB::table('modules_users')->insert(array(
+	           	 'module_id' => $id,
+	           	 'user_id' => $user_id)
+				);
+			}
+		}
 		return Redirect::action('ModuleController@index');
 	}
 
-		public function register($id)
+	public function unregister($id)
 	{
-		$user = Module::find($id);
-		$user->delete();
+		if (Auth::check())
+		{
+			$user_id = Auth::user()->id;
+			$user = DB::table('modules_users')
+	                    ->where('module_id', '=', $id)
+	                    ->orWhere('user_id', '=', $user_id)
+	                    ->get();
+			$user->delete();
+		}
 		return Redirect::action('ModuleController@index');
 	}
 
